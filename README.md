@@ -1,16 +1,87 @@
-# React + Vite
+# 🧠 Cache Memory Simulator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An **interactive visual simulator** for cache memory, built with **React + Tailwind CSS + Vite**.  
+It allows users to explore **Direct**, **Set-Associative**, and **Fully-Associative** cache organizations — along with replacement policies like **LRU** — in a visually intuitive way.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- 🧩 Supports **Direct**, **Set-Associative**, and **Fully-Associative** cache types  
+- 🔁 **LRU replacement policy** visualization  
+- 📊 Displays **hit rate**, **miss rate**, and **AMAT** in real time  
+- 🧮 Step-by-step tracing of memory accesses  
+- 💾 Interactive UI with smooth transitions and clean layout  
+- 📸 Option to **export results** or take **screenshots**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧱 Tech Stack
+- ⚛️ **React.js (Vite)**
+- 🎨 **Tailwind CSS**
+- 🧮 **JavaScript (ES6)**
+- 🧰 **HTML5 / CSS3**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Project Structure
+Cache-Memory-Simulator/
+│
+├── public/ # Static assets (vite.svg etc.)
+├── src/ # Source code
+│ ├── App.jsx
+│ ├── App.css
+│ ├── index.css
+│ └── main.jsx
+│
+├── .gitignore
+├── index.html
+├── package.json
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+
+yaml
+Copy code
+
+---
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Anuj-Singh-05/Cache-Memory-Simulator.git
+   cd Cache-Memory-Simulator
+2. Install dependencies
+
+   ```bash
+   npm install
+3. Run the development server
+
+   ```bash
+   npm run dev
+4. Open in browser
+
+   ```bash
+   Default: http://localhost:5173
+
+---
+
+📸 Screenshots
+
+<img width="1897" height="985" alt="Screenshot 2025-11-01 222244" src="https://github.com/user-attachments/assets/a8ddac18-c296-4d81-9e73-a3bbeb936066" />
+
+---
+
+## 🧠 Concepts Visualized
+- Cache Lines, Blocks, and Sets
+- Mapping Techniques (Direct, Set-Associative, Fully-Associative)
+- Replacement Policies (LRU)
+- Cache Performance Metrics (Hit/Miss Rate, AMAT)
+
+---
+
+## 🪪 License
+This project is licensed under the MIT License.
+
+---
