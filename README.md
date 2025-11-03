@@ -40,9 +40,6 @@ Cache-Memory-Simulator/
 ├── vite.config.js
 └── README.md
 
-yaml
-Copy code
-
 ---
 
 ## ⚙️ Installation & Setup
