@@ -1,0 +1,395 @@
+/* App.css — FINAL CORRECTED VERSION (No Syntax Errors) */
+
+/* ---------------------------------- */
+/* 1. Global Setup and Variables */
+/* ---------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+:root{
+  --bg-1:#071127;
+  --bg-2:#081626;
+  --glass: rgba(255,255,255,0.03);
+  --muted: #9fb0c4;
+  --accent: linear-gradient(90deg,#06b6d4, #7c3aed);
+  --accent-color: #06b6d4;
+  --accent2: #7c3aed;
+  --good: #10b981;
+  --bad: #ef4444;
+  --ev: #fb923c;
+  --card-shadow: 0 10px 40px rgba(2,6,23,0.6);
+}
+
+*{box-sizing:border-box}
+
+html,body,#root{
+    min-height:100%;
+    margin:0;
+    background:linear-gradient(180deg,var(--bg-1), #071827);
+    font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;
+    color:#e6eef6;
+    /* ADD THIS LINE */
+    height: 100vh; 
+    /* AND THIS LINE */
+    overflow-y: auto;
+}
+
+/* ---------------------------------- */
+/* 2. Background and Layout */
+/* ---------------------------------- */
+
+.bg-blobs{
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(600px 260px at 10% 10%, rgba(124,58,237,0.08), transparent 18%),
+      radial-gradient(400px 180px at 90% 80%, rgba(6,182,212,0.06), transparent 18%);
+    transform: translateZ(0);
+    animation: float 12s linear infinite;
+}
+@keyframes float { 0%{filter:blur(0)}50%{filter:blur(2px)}100%{filter:blur(0)} }
+
+/* top bar / brand */
+.topbar-enhanced{
+    z-index:10; 
+    max-width:1200px;
+    margin:0 auto; 
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    backdrop-filter:none; 
+    -webkit-backdrop-filter:none; 
+    background:var(--bg-1); 
+    border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.brand{display:flex;gap:12px;align-items:center}
+.brand.center{margin:0 auto; flex-direction:column; align-items:center; text-align:center}
+.title-box{
+    padding:10px 18px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.06);
+    box-shadow:0 10px 28px rgba(2,6,23,0.32), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.logo{border-radius:8px;box-shadow: 0 6px 24px rgba(2,6,23,0.5)}
+.title{
+    font-size:22px;
+    font-weight:800;
+    margin:0;
+    position:relative; 
+    letter-spacing:0.2px; 
+    background-image:linear-gradient(90deg,#e6eef6, #9ecbff 40%, #a78bfa 80%);
+    -webkit-background-clip:text; 
+    background-clip:text; 
+    color:transparent;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.1), 0 8px 24px rgba(124,58,237,0.25), 0 4px 12px rgba(6,182,212,0.22);
+}
+.subtitle{ 
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    margin-top:2px;
+}
+
+/* container */
+/* FIX: Used CSS Grid to ensure the container-enhanced takes remaining space */
+.page-enhanced{
+    min-height:100vh; 
+    display: grid; 
+    grid-template-rows: auto 1fr; /* Header is auto, main content is 1fr */
+    padding-bottom: 0;
+} 
+
+/* FIX: Added margin-bottom for spacing */
+.container-enhanced{
+    z-index:2;
+    max-width:1200px;
+    margin: 10px auto 28px; /* Added margin-bottom for space below container */
+    padding:16px 16px 28px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.03);
+    box-shadow:var(--card-shadow);
+    display:grid;
+    grid-template-columns:300px 1fr;
+    gap:18px; 
+    overflow: hidden;
+}
+
+/* ---------------------------------- */
+/* 3. Left Panel (Config) */
+/* ---------------------------------- */
+.panel-left{
+    padding:18px;
+    border-radius:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.008));
+    border:1px solid rgba(255,255,255,0.02);
+}
+.panel-left h2{margin:0 0 10px 0;font-size:20px}
+.panel-left label{display:block;color:var(--muted);margin-top:8px;margin-bottom:6px;font-size:13px}
+.panel-left input, 
+.panel-left select{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.03);
+    background:rgba(255,255,255,0.02);
+    color:#e6eef6;
+    font-size:14px;
+}
+
+/* Dropdown specific styles */
+.dropdown{position:relative}
+.dropdown-trigger{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.06);
+    background:#0b1327;
+    color:#e6eef6;
+    text-align:left;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-weight:600;
+}
+.dropdown-trigger:hover{box-shadow:0 8px 20px rgba(2,6,23,0.25)}
+.dropdown .chev{opacity:0.7}
+.dropdown-menu{
+    position:absolute;
+    left:0;
+    right:0;
+    top:calc(100% + 6px);
+    background:#0b1327;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.45);
+    max-height:220px;
+    overflow:auto;
+    z-index:20;
+}
+.dropdown-item{padding:10px 12px;cursor:pointer}
+.dropdown-item:hover{background:#0e1933}
+.dropdown-item.active{background:#0e1933;border-left:3px solid #06b6d4}
+
+/* Button & Input Grouping */
+.panel-row{display:flex;gap:10px;margin-top:14px;align-items:center}
+
+.button-group-center {
+    justify-content: center;
+}
+
+/* FIX: Penalty text wrap fix (reduced font size) */
+.grid-two{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+    align-items:end;
+    justify-content: center; 
+}
+.grid-two > div{
+    display:flex;
+    flex-direction:column; 
+    align-items:center; 
+    text-align:center;
+    flex: 1 1 100px; 
+}
+.grid-two label{
+    min-height:18px;
+    line-height: 1.2;
+    font-size: 12px; /* Key fix for one-line text */
+    white-space: nowrap;
+}
+.grid-two input{
+    max-width: 100%;
+}
+.panel-row .btn{height:40px}
+
+/* Button Base Styles */
+.btn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:none;
+    background:#eef4f6;
+    color:#041418;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(2,6,23,0.25);
+    transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(2,6,23,0.32)}
+.btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03);box-shadow:none}
+.btn.primary{background:linear-gradient(90deg,#06b6d4,#7c3aed);color:#07121a}
+.btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+.btn.accent{background:var(--accent-color);color:#06161a}
+.btn.tiny{
+    padding:8px 10px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.02);
+    background:rgba(255,255,255,0.02);
+    color:var(--muted);
+    font-weight:600;
+}
+
+.help{margin-top:12px;color:var(--muted);font-size:13px}
+
+/* ---------------------------------- */
+/* 4. Right Panel (Trace & Visual) */
+/* ---------------------------------- */
+
+.panel-right{display:flex;flex-direction:column;gap:14px}
+
+/* trace panel */
+.trace-panel{display:flex;gap:12px;align-items:flex-start}
+.trace-panel textarea{
+    flex:1;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.03);
+    min-height:64px;
+    background:rgba(255,255,255,0.02);
+    color:#e6eef6;
+    font-size:14px;
+}
+.trace-controls{
+    width:140px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.trace-controls .btn { 
+    width:100%; 
+    padding:10px 12px; 
+    gap: 12px; 
+}
+
+/* visual panel and grid */
+.visual-panel{
+    padding:12px;
+    border-radius:10px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.00));
+    border:1px solid rgba(255,255,255,0.02);
+    padding-bottom: 18px;
+}
+
+.metrics{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:6px 2px 10px}
+.metric{
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.03);
+    border-radius:10px;
+    padding:10px 12px;
+    min-width:120px;
+}
+.metric .k{color:var(--muted);font-size:12px}
+.metric .v{font-weight:800}
+
+.spark{display:flex;align-items:center;gap:10px;margin-left:auto}
+.spark-label{color:var(--muted);font-size:12px}
+
+/* Address visualization */
+.address-viz{
+    margin:8px 2px 14px;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.02);
+    background:rgba(255,255,255,0.02);
+}
+.address-viz .label{color:var(--muted);font-size:12px;margin-bottom:6px}
+.address-viz .bits{
+    font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+}
+.address-viz .bits .tag{background:rgba(124,58,237,0.18);padding:4px 6px;border-radius:6px}
+.address-viz .bits .index{background:rgba(6,182,212,0.18);padding:4px 6px;border-radius:6px}
+.address-viz .bits .offset{background:rgba(251,146,60,0.18);padding:4px 6px;border-radius:6px}
+.address-viz .legend-mini{margin-top:6px;color:var(--muted);display:flex;gap:12px;font-size:12px}
+.address-viz .legend-mini .l.tag{color:#a78bfa}
+.address-viz .legend-mini .l.index{color:#67e8f9}
+.address-viz .legend-mini .l.offset{color:#fdba74}
+
+/* Cache Grid */
+.cache-grid{display:grid;gap:12px;align-items:stretch}
+.cell{
+    padding:8px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.015);
+    border:1px solid rgba(255,255,255,0.02);
+    min-height:68px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:transform .14s ease, box-shadow .14s ease;
+}
+.cell-title{font-size:13px;color:var(--muted)}
+.cell-body{margin-top:8px;font-weight:800;color:#e6eef6;font-size:16px}
+.heat{width:100%;height:6px;border-radius:6px;background:rgba(255,255,255,0.03);margin-top:10px;overflow:hidden}
+.heat .bar{height:100%;background:linear-gradient(90deg, rgba(6,182,212,0.55), rgba(124,58,237,0.55))}
+
+/* highlight states with subtle animation */
+.cell.hit{animation:pop .45s ease forwards;background:linear-gradient(180deg, rgba(16,185,129,0.12), rgba(16,185,129,0.02));border-color:rgba(16,185,129,0.22);box-shadow:0 12px 34px rgba(16,185,129,0.06)}
+.cell.miss{animation:pop .45s ease forwards;background:linear-gradient(180deg, rgba(239,68,68,0.11), rgba(239,68,68,0.02));border-color:rgba(239,68,68,0.14);box-shadow:0 12px 34px rgba(239,68,68,0.06)}
+.cell.evict{animation:pop .45s ease forwards;background:linear-gradient(180deg, rgba(251,146,60,0.11), rgba(251,146,60,0.02));border-color:rgba(251,146,60,0.14);box-shadow:0 12px 34px rgba(251,146,60,0.06)}
+@keyframes pop{0%{transform:translateY(0) scale(1)}40%{transform:translateY(-6px) scale(1.02)}100%{transform:translateY(0) scale(1)}}
+
+/* footer / stats */
+.visual-footer{display:flex;align-items:center;justify-content:center;margin-top:12px;padding:0 12px 6px}
+.stats-mini{color:var(--muted); margin-right: auto;} 
+.stats-mini .good{color:var(--good);font-weight:800}
+.stats-mini .bad{color:var(--bad);font-weight:800}
+.visual-actions{display:flex;gap:8px;padding-right:6px}
+
+/* legend */
+.legend{margin-top:12px;color:var(--muted);display:flex;gap:18px;align-items:center;font-size:13px}
+.badge{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:8px}
+.badge.green{background:var(--good)}
+.badge.red{background:var(--bad)}
+.badge.orange{background:var(--ev)}
+
+/* ---------------------------------- */
+/* 5. Responsive / Utility Fixes */
+/* ---------------------------------- */
+@media (max-width:980px){
+    .container-enhanced{grid-template-columns:1fr; padding:14px; margin:6px auto 12px; min-height: calc(100vh - 72px)}
+    .trace-controls{width:auto;flex-direction:row}
+    .trace-panel{flex-direction:column}
+    .topbar-enhanced{padding:8px 12px}
+}
+
+/* Disable visual effects for clean screenshots */
+.no-effects .topbar-enhanced{
+    backdrop-filter:none !important; 
+    -webkit-backdrop-filter:none !important; 
+    background:rgba(7,17,39,0.9) !important;
+}
+.no-effects *{animation:none !important}
+
+/* Select/Input style overrides for consistency */
+.panel-left select,
+.panel-left input,
+.trace-panel textarea,
+.trace-controls .btn {
+    background: rgba(255,255,255,0.02) !important;
+    color: #e6eef6 !important;
+    border-color: rgba(255,255,255,0.03) !important;
+}
+
+/* Hide default number spinners */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number]{ -moz-appearance: textfield; appearance: textfield; }
+
+/* Focus ring for accessibility and polish */
+.panel-left select:focus, 
+.panel-left input:focus, 
+.trace-panel textarea:focus {
+    outline: 2px solid rgba(6,182,212,0.12);
+    box-shadow: 0 6px 18px rgba(6,182,212,0.06);
+}
+
+/* Ensure the dropdown *list* options are dark too */
+.panel-left select option {
+    background: linear-gradient(180deg, #071827, #071827) !important;
+    color: #e6eef6 !important;
+}
